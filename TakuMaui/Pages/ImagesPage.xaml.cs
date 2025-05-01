@@ -30,8 +30,9 @@ public partial class ImagesPage : ContentPage, INotifyPropertyChanged
     {
         var sampleImages = new[] 
         { 
-            "sampleimage1_200kbmb.jpg",
-            "sampleimage_200kbmb.png"
+            "dante.jpg",
+            "itachi.jpg",
+            "luffy.jpg"
         };
 
         for (int i = 0; i < sampleImages.Length; i++)
