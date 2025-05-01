@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TakuMaui.Pages.CardsPage"
+             Title="Cards">
+    <Grid RowDefinitions="Auto,*">
+        <Button Grid.Row="0"
+                Text="Back to Home"
+                Clicked="OnBackClicked"
+                HorizontalOptions="Start"
+                Margin="10"/>
+                
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="25" Padding="20">
+                <Frame CornerRadius="10" BorderColor="LightGray" Padding="15">
+                    <VerticalStackLayout>
+                        <Label Text="Basic Card" FontSize="24" FontAttributes="Bold"/>
+                        <Label Text="This is a simple card with some text content." Margin="0,10,0,0"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame CornerRadius="10" BorderColor="LightGray" Padding="15">
+                    <Grid RowDefinitions="Auto,Auto,Auto">
+                        <Image Source="dotnet_bot.png" HeightRequest="200" Aspect="AspectFit"/>
+                        <Label Grid.Row="1" Text="Card with Image" FontSize="24" FontAttributes="Bold" Margin="0,10,0,0"/>
+                        <Label Grid.Row="2" Text="This card includes an image and description." Margin="0,10,0,0"/>
+                    </Grid>
+                </Frame>
+
+                <Frame CornerRadius="10" BorderColor="LightGray" Padding="15">
+                    <VerticalStackLayout>
+                        <Label Text="Interactive Card" FontSize="24" FontAttributes="Bold"/>
+                        <Label Text="This card has a button." Margin="0,10,0,0"/>
+                        <Button Text="Click Me" Margin="0,10,0,0" BackgroundColor="DodgerBlue"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

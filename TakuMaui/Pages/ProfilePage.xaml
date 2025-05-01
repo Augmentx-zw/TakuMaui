@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TakuMaui.Pages.ProfilePage"
+             Title="Taku Profile">
+    
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+            <!-- Profile Card -->
+            <Frame CornerRadius="10" BorderColor="LightGray" Padding="15">
+                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*">
+                    <Image Grid.RowSpan="3" 
+                           Source="dotnet_bot.png" 
+                           HeightRequest="100" 
+                           WidthRequest="100"
+                           Margin="0,0,15,0"/>
+                    
+                    <Label Grid.Column="1" 
+                           Text="Taku Developer" 
+                           FontSize="24" 
+                           FontAttributes="Bold"/>
+                    
+                    <Label Grid.Row="1" 
+                           Grid.Column="1" 
+                           Text="Senior IT Professional"
+                           TextColor="Gray"/>
+                    
+                    <Label Grid.Row="2" 
+                           Grid.Column="1" 
+                           Text="Cloud &amp; Infrastructure Team"
+                           TextColor="Gray"/>
+                </Grid>
+            </Frame>
+
+            <!-- Task Progress Section -->
+            <Frame CornerRadius="10" BorderColor="LightGray" Padding="15">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Current Sprint Progress" 
+                           FontSize="20" 
+                           FontAttributes="Bold"/>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Infrastructure Setup" 
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1" 
+                                   Text="75%" 
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                        <ProgressBar Progress="0.75" 
+                                   ProgressColor="DodgerBlue"/>
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Server Migration" 
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1" 
+                                   Text="45%" 
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                        <ProgressBar Progress="0.45" 
+                                   ProgressColor="Orange"/>
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Security Updates" 
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1" 
+                                   Text="90%" 
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                        <ProgressBar Progress="0.90" 
+                                   ProgressColor="Green"/>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Tasks Table -->
+            <Frame CornerRadius="10" BorderColor="LightGray" Padding="15">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Active Tasks" 
+                           FontSize="20" 
+                           FontAttributes="Bold"/>
+
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" 
+                          ColumnDefinitions="2*,*,*">
+                        
+                        <!-- Headers -->
+                        <Label Grid.Column="0" 
+                               Text="Task" 
+                               FontAttributes="Bold"/>
+                        <Label Grid.Column="1" 
+                               Text="Priority" 
+                               FontAttributes="Bold"/>
+                        <Label Grid.Column="2" 
+                               Text="Due Date" 
+                               FontAttributes="Bold"/>
+                        
+                        <!-- Row 1 -->
+                        <Label Grid.Row="1" 
+                               Grid.Column="0" 
+                               Text="Azure Migration Phase 2"/>
+                        <Label Grid.Row="1" 
+                               Grid.Column="1" 
+                               Text="High" 
+                               TextColor="Red"/>
+                        <Label Grid.Row="1" 
+                               Grid.Column="2" 
+                               Text="May 15"/>
+                        
+                        <!-- Row 2 -->
+                        <Label Grid.Row="2" 
+                               Grid.Column="0" 
+                               Text="Network Security Audit"/>
+                        <Label Grid.Row="2" 
+                               Grid.Column="1" 
+                               Text="Medium" 
+                               TextColor="Orange"/>
+                        <Label Grid.Row="2" 
+                               Grid.Column="2" 
+                               Text="May 20"/>
+                        
+                        <!-- Row 3 -->
+                        <Label Grid.Row="3" 
+                               Grid.Column="0" 
+                               Text="Backup System Update"/>
+                        <Label Grid.Row="3" 
+                               Grid.Column="1" 
+                               Text="Low" 
+                               TextColor="Green"/>
+                        <Label Grid.Row="3" 
+                               Grid.Column="2" 
+                               Text="May 30"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Back to Home"
+                    Clicked="OnBackClicked"
+                    HorizontalOptions="Start"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

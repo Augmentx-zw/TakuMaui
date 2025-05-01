@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TakuMaui.Pages.ProgressBarsPage"
+             Title="Taku Bars">
+    <Grid RowDefinitions="Auto,*">
+        <Button Grid.Row="0"
+                Text="Back to Home"
+                Clicked="OnBackClicked"
+                HorizontalOptions="Start"
+                Margin="10"/>
+                
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="25" Padding="20">
+                <VerticalStackLayout>
+                    <Label Text="Basic Progress Bar" Margin="0,0,0,10"/>
+                    <ProgressBar Progress="0.7" 
+                               ProgressColor="DodgerBlue"
+                               HeightRequest="10"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Progress Bar with Percentage" Margin="0,0,0,10"/>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <ProgressBar Progress="0.45" 
+                                   ProgressColor="Green"
+                                   HeightRequest="10"/>
+                        <Label Grid.Column="1" 
+                               Text="45%" 
+                               Margin="10,0,0,0"/>
+                    </Grid>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Activity Indicator" Margin="0,0,0,10"/>
+                    <ActivityIndicator IsRunning="True" 
+                                     Color="DodgerBlue"
+                                     HeightRequest="50"
+                                     WidthRequest="50"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Custom Colored Progress Bar" Margin="0,0,0,10"/>
+                    <ProgressBar Progress="0.9" 
+                               ProgressColor="Orange"
+                               HeightRequest="10"/>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

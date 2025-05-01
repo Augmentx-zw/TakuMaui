@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TakuMaui.Pages.TablesPage"
+             Title="Taku Tasks">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Padding="20">
+        <!-- Search Bar -->
+        <SearchBar Grid.Row="0"
+                   x:Name="SearchBar"
+                   Placeholder="Search tasks..."
+                   TextChanged="OnSearchTextChanged"
+                   Margin="0,0,0,10"/>
+
+        <!-- Table Headers -->
+        <Grid Grid.Row="1" 
+              ColumnDefinitions="3*,2*,*,*"
+              BackgroundColor="{StaticResource Primary}"
+              Padding="10">
+            <Label Text="Task" 
+                   TextColor="White" 
+                   FontAttributes="Bold"/>
+            <Label Grid.Column="1" 
+                   Text="Category" 
+                   TextColor="White" 
+                   FontAttributes="Bold"/>
+            <Label Grid.Column="2" 
+                   Text="Status" 
+                   TextColor="White" 
+                   FontAttributes="Bold"/>
+            <Label Grid.Column="3" 
+                   Text="Completion" 
+                   TextColor="White" 
+                   FontAttributes="Bold"/>
+        </Grid>
+
+        <!-- Table Content -->
+        <CollectionView Grid.Row="2"
+                        x:Name="TasksCollection"
+                        ItemsSource="{Binding DisplayedTasks}"
+                        Margin="0,0,0,10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" 
+                          ColumnDefinitions="3*,2*,*,*">
+                        <Label Text="{Binding TaskName}" 
+                               VerticalOptions="Center"/>
+                        <Label Grid.Column="1" 
+                               Text="{Binding Category}"
+                               VerticalOptions="Center"/>
+                        <Label Grid.Column="2" 
+                               Text="{Binding Status}"
+                               TextColor="{Binding StatusColor}"
+                               VerticalOptions="Center"/>
+                        <Label Grid.Column="3" 
+                               Text="{Binding CompletionRate}"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Pagination Controls -->
+        <Grid Grid.Row="3" 
+              ColumnDefinitions="Auto,*,Auto"
+              Margin="0,0,0,20">
+            <Button Grid.Column="0"
+                    Text="Previous"
+                    Clicked="OnPreviousClicked"
+                    x:Name="PreviousButton"/>
+            <Label Grid.Column="1"
+                   x:Name="PageInfo"
+                   Text="Page 1 of 1"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <Button Grid.Column="2"
+                    Text="Next"
+                    Clicked="OnNextClicked"
+                    x:Name="NextButton"/>
+        </Grid>
+
+        <!-- Back Button -->
+        <Button Grid.Row="4"
+                Text="Back to Home"
+                Clicked="OnBackClicked"
+                HorizontalOptions="Start"/>
+    </Grid>
+
+</ContentPage>
