@@ -103,15 +103,3 @@ dotnet publish -f net8.0-maccatalyst
 ## Version
 
 Current Version: 1.0
-
-## License
-
-[Your chosen license]
-
-## Contributing
-
-[Your contribution guidelines]
-
-## Support
-
-[Your support information]
