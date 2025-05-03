@@ -10,7 +10,8 @@
 
     <Grid>
         <CollectionView x:Name="MediaCollection"
-                       ItemsSource="{Binding MediaItems}">
+                       ItemsSource="{Binding MediaItems}"
+                       RemainingItemsThreshold="2">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" 
                                  ItemSpacing="0" />
@@ -35,8 +36,11 @@
                             ShouldLoopPlayback="True"
                             ShouldShowPlaybackControls="True"
                             ShouldKeepScreenOn="True"
+                            Loaded="OnMediaElementLoaded"
                             MediaFailed="OnMediaFailed"
-                            MediaOpened="OnMediaOpened"/>
+                            MediaOpened="OnMediaOpened"
+                            PropertyChanged="OnMediaElementPropertyChanged"
+                            IsVisible="{Binding Type, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static models:MediaType.Video}}"/>
 
                         <!-- Common Overlay -->
                         <VerticalStackLayout Padding="20"

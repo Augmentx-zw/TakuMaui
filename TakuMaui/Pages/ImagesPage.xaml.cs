@@ -39,6 +39,7 @@ public partial class ImagesPage : ContentPage, INotifyPropertyChanged
             ("luffy.jpg", "Luffy", "Image of Luffy")
         };
 
+        // Add all images first
         for (int i = 0; i < sampleImages.Length; i++)
         {
             MediaItems.Add(new MediaItem
@@ -56,16 +57,7 @@ public partial class ImagesPage : ContentPage, INotifyPropertyChanged
             });
         }
 
-        int luffyIndex = -1;
-        for (int i = 0; i < MediaItems.Count; i++)
-        {
-            if (MediaItems[i].FilePath == "luffy.jpg")
-            {
-                luffyIndex = i;
-                break;
-            }
-        }
-
+        // Add video at the end
         var videoItem = new MediaItem
         {
             Title = "Sample Video",
@@ -77,14 +69,7 @@ public partial class ImagesPage : ContentPage, INotifyPropertyChanged
             Likes = Random.Shared.Next(50, 5000)
         };
 
-        if (luffyIndex != -1)
-        {
-            MediaItems.Insert(luffyIndex + 1, videoItem);
-        }
-        else
-        {
-            MediaItems.Add(videoItem);
-        }
+        MediaItems.Add(videoItem);
     }
 
     private async void OnBackClicked(object sender, EventArgs e)
@@ -118,6 +103,21 @@ public partial class ImagesPage : ContentPage, INotifyPropertyChanged
         if (sender is MediaElement mediaElement)
         {
             mediaElement.Play();
+        }
+    }
+
+    private void OnMediaElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (sender is MediaElement mediaElement && e.PropertyName == "IsVisible")
+        {
+            if (!mediaElement.IsVisible && mediaElement.CurrentState == MediaElementState.Playing)
+            {
+                mediaElement.Pause();
+            }
+            else if (mediaElement.IsVisible && mediaElement.CurrentState == MediaElementState.Paused)
+            {
+                mediaElement.Play();
+            }
         }
     }
 
