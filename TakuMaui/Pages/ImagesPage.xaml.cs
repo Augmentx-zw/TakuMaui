@@ -110,11 +110,14 @@ public partial class ImagesPage : ContentPage, INotifyPropertyChanged
     {
         if (sender is MediaElement mediaElement && e.PropertyName == "IsVisible")
         {
-            if (!mediaElement.IsVisible && mediaElement.CurrentState == MediaElementState.Playing)
+            if (!mediaElement.IsVisible)
             {
-                mediaElement.Pause();
+                // Stop rather than pause to fully halt playback
+                mediaElement.Stop();
             }
-            else if (mediaElement.IsVisible && mediaElement.CurrentState == MediaElementState.Paused)
+            else if (mediaElement.IsVisible && 
+                    (mediaElement.CurrentState == MediaElementState.Stopped || 
+                     mediaElement.CurrentState == MediaElementState.Paused))
             {
                 mediaElement.Play();
             }
